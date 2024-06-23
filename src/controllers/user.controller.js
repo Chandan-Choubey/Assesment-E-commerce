@@ -28,7 +28,7 @@ const registerUser = async (req, res) => {
     throw new ApiError(400, "User already exists");
   }
   console.log(req.file);
-  const avaterLocalPath = req.file.path;
+  const avaterLocalPath = req.file?.path;
   if (!avaterLocalPath) {
     throw new ApiError(400, "Image is required");
   }

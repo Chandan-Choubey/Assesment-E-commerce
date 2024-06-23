@@ -5,9 +5,11 @@ import Order from "../models/order.model.js";
 import mongoose from "mongoose";
 import nock from "nock";
 import fetch from "node-fetch";
+import { v4 as uuid } from "uuid";
+import { isValidObjectId } from "mongoose";
 
 nock("https://api.stripe.com").post("/v1/payment_intents").reply(200, {
-  id: "",
+  id: uuid(),
   status: "succeeded",
   amount: 2000,
   currency: "IND",
@@ -59,6 +61,21 @@ const getTheAmount = async (userId) => {
   }
 };
 
+const paymentPending = async ({ user, orderId, status }) => {
+  if (!isValidObjectId(user) || !isValidObjectId(orderId) || !status) {
+    throw new ApiError(
+      400,
+      "User ID, Order ID are not valid, and status is required"
+    );
+  }
+  const existingPayment = await Payment.findOne({
+    user: user,
+    order: orderId,
+    status: status,
+  });
+  return !!existingPayment;
+};
+
 const createPayment = async (req, res, next) => {
   try {
     const { paymentMethod } = req.body;
@@ -72,6 +89,25 @@ const createPayment = async (req, res, next) => {
       throw new ApiError(400, "Payment method is required");
     }
 
+    const existingPayment = await paymentPending({
+      user: req.user._id,
+      orderId,
+      status: "Completed",
+    });
+
+    if (existingPayment) {
+      return res.status(400).json(
+        new ApiResponse(
+          400,
+          {
+            user: req.user._id,
+            orderId: orderId,
+          },
+          "Payment for this order has already been completed"
+        )
+      );
+    }
+
     const stripeResponse = await fetch(
       "https://api.stripe.com/v1/payment_intents",
       {
@@ -81,9 +117,9 @@ const createPayment = async (req, res, next) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount: totalAmount * 100, // Stripe expects amount in cents
-          currency: "inr", // Adjust currency as per your requirement
-          payment_method_types: ["card"],
+          amount: totalAmount,
+          currency: "inr",
+          payment_method_types: paymentMethod,
         }),
       }
     );
