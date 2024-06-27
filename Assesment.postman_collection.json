@@ -1,0 +1,647 @@
+{
+	"info": {
+		"_postman_id": "dcd4e44b-53a9-4642-805d-65476441642b",
+		"name": "Assesment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24585948"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/choub/OneDrive/Pictures/Screenshots/1.png"
+								},
+								{
+									"key": "username",
+									"value": "Chandan",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "Chandan Choubey",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "choubeychandan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "2024",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/users/register",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Chandan\",\r\n    \"password\":\"2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/users/login",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/users/logout",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/users/refreshtoken",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"refreshtoken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newPassword\":\"2024\",\r\n    \"oldPassword\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/users/changepassword",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"changepassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/users/getcuser",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"getcuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Details",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\":\"cc\",\r\n     \"email\":\"cc@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/users/updatedetails",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"updatedetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update avatar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/choub/OneDrive/Pictures/Screenshots/Screenshot 2024-03-29 221254.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/users/updateavatar",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"updateavatar"
+							],
+							"query": [
+								{
+									"key": "avatar",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle user admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/users/toggleadmin",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"toggleadmin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Phone",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A high-end smartphone with a large display and powerful processor.",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "999.99",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Electronics",
+									"type": "text"
+								},
+								{
+									"key": "product",
+									"type": "file",
+									"src": "/C:/Users/choub/OneDrive/Pictures/Screenshots/1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/product/create-products",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"product",
+								"create-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/product/get-products",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"product",
+								"get-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product On Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/product/get-products/6676989e1d492459ffe00c95",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"product",
+								"get-products",
+								"6676989e1d492459ffe00c95"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Chandan",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/product/update-products/6676989e1d492459ffe00c95",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"product",
+								"update-products",
+								"6676989e1d492459ffe00c95"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-Products",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/product/delete-products/6676989e1d492459ffe00c95",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"product",
+								"delete-products",
+								"6676989e1d492459ffe00c95"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\": [\r\n     {\r\n        \"product\":\"6676ab294d23db2935d83fed\",\r\n        \"quantity\":\"4\"\r\n    },\r\n    {\r\n       \"product\":\"667843e25acbd34622a7b96f\",\r\n       \"quantity\":\"4\"\r\n    }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/order/create-orders",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"order",
+								"create-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/order/get-orders/66784db1c119d79f3a529332",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"order",
+								"get-orders",
+								"66784db1c119d79f3a529332"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/order/get-orders",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"order",
+								"get-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"Delivered\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/order/update-orders/6676ab914d23db2935d83ff1/status",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"order",
+								"update-orders",
+								"6676ab914d23db2935d83ff1",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/order/delete-orders/6676ab914d23db2935d83ff1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"order",
+								"delete-orders",
+								"6676ab914d23db2935d83ff1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By User Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/order/get-orders-by-user/66766d536d5c475de108c1c9",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"order",
+								"get-orders-by-user",
+								"66766d536d5c475de108c1c9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Payment",
+			"item": [
+				{
+					"name": "Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paymentMethod\":\"Debit Card\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/payment/create-payments",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"payment",
+								"create-payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/payment/get-payments/6676bcf1b294a9914a5c4a2a",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"payment",
+								"get-payments",
+								"6676bcf1b294a9914a5c4a2a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/payment/get-payments",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"payment",
+								"get-payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Payment Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"Completed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/payment/update-payments/6676bcf1b294a9914a5c4a2a/status",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"payment",
+								"update-payments",
+								"6676bcf1b294a9914a5c4a2a",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Payment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/payment/delete-payments/6676bcf1b294a9914a5c4a2a",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"payment",
+								"delete-payments",
+								"6676bcf1b294a9914a5c4a2a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
