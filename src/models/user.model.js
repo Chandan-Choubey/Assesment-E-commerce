@@ -41,6 +41,10 @@ const UserSchema = mongoose.Schema(
       type: String,
       required: [true, "Password is required"],
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
     refreshToken: {},
   },
   { timestamps: true }
@@ -63,6 +67,7 @@ UserSchema.methods.generateAccessToken = function () {
       email: this.email,
       username: this.username,
       fullname: this.fullname,
+      isAdmin: this.isAdmin,
     },
     process.env.ACCESS_TOKEN_SECRET,
     {

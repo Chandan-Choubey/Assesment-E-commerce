@@ -248,6 +248,20 @@ const updateAvatar = async (req, res) => {
   }
 };
 
+const toggleUserAdmin = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      throw new ApiError(400, "User not found || Please login first");
+    }
+    user.isAdmin = !user.isAdmin;
+    await user.save();
+    res.status(200).json(new ApiResponse(200, user, "Admin"));
+  } catch (error) {
+    throw new ApiError(400, "Error in setting user as admin");
+  }
+};
+
 export {
   registerUser,
   loginUser,
@@ -257,4 +271,5 @@ export {
   getCurrentUser,
   updateUserDetails,
   updateAvatar,
+  toggleUserAdmin,
 };

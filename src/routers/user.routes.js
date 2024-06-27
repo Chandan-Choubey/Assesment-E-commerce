@@ -8,6 +8,7 @@ import {
   getCurrentUser,
   updateUserDetails,
   updateAvatar,
+  toggleUserAdmin,
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyjwt } from "../middlewares/auth.middleware.js";
@@ -20,6 +21,7 @@ router.route("/refreshtoken").post(verifyjwt, refreshToken);
 router.route("/changepassword").post(verifyjwt, changeCurrentPassword);
 router.route("/getcuser").post(verifyjwt, getCurrentUser);
 router.route("/updatedetails").patch(verifyjwt, updateUserDetails);
+router.route("/toggleAdmin").post(verifyjwt, toggleUserAdmin);
 router
   .route("/updateavatar")
   .patch(verifyjwt, upload.single("avatar"), updateAvatar);
