@@ -15,9 +15,9 @@ connectDb()
   .then(() => {
     const httpsServer = https.createServer(credentials, app);
 
-    httpsServer.listen(process.env.HTTPS_PORT || 4000, () => {
+    httpsServer.listen(process.env.HTTPS_PORT || 3000, () => {
       console.log(
-        `HTTPS Server is running on port ${process.env.HTTPS_PORT || 443}`
+        `HTTPS Server is running on port ${process.env.HTTPS_PORT || 3000}`
       );
     });
   })
