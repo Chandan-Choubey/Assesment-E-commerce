@@ -25,6 +25,10 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cookieParser());
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 import userRouter from "./src/routers/user.routes.js";
 import productRouter from "./src/routers/product.routes.js";
 import orderRouter from "./src/routers/order.routes.js";
