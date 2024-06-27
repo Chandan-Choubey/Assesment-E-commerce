@@ -1,6 +1,5 @@
 import dotenv from "dotenv";
 import fs from "fs";
-import http from "http";
 import https from "https";
 import connectDb from "./src/db/index.js";
 import { app } from "./app.js";
@@ -14,18 +13,7 @@ const credentials = { key: privateKey, cert: certificate };
 
 connectDb()
   .then(() => {
-    const httpServer = http.createServer((req, res) => {
-      res.writeHead(301, { Location: `https://${req.headers.host}${req.url}` });
-      res.end();
-    });
-
     const httpsServer = https.createServer(credentials, app);
-
-    httpServer.listen(process.env.HTTP_PORT || 3000, () => {
-      console.log(
-        `HTTP Server is running on port ${process.env.HTTP_PORT || 3000}`
-      );
-    });
 
     httpsServer.listen(process.env.HTTPS_PORT || 443, () => {
       console.log(
